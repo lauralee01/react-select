@@ -64,7 +64,9 @@ export const Dropdown = ({ placeholder, options, isSearchable, isMulti }) => {
   return (
     <div>
       <div className={Styles.wrapper}>
-        <div className={Styles.cover}>{displayedData()}</div>
+        <div className={Styles.cover} data-testid="data">
+          {displayedData()}
+        </div>
 
         {!showDropList ? (
           <KeyboardArrowUp onClick={toggleShow} className={Styles.icon} />

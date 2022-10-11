@@ -8,7 +8,7 @@ export const DropdownList = ({
   handleSearchOption,
 }) => {
   return (
-    <div className={Styles.wrapper}>
+    <div className={Styles.wrapper} data-testid="options">
       {isSearchable && options.length ? (
         <input
           type="text"
