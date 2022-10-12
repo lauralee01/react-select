@@ -4,7 +4,8 @@ import reportWebVitals from "./reportWebVitals";
 import { Dropdown } from "./lib/components/dropdown/Dropdown";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
-const options = [];
+const options = [
+];
 root.render(
   <React.StrictMode>
     <Dropdown options={options} isSearchable isMulti />
