@@ -19,8 +19,8 @@ export const DropdownList = ({
         />
       ) : null}
       <ul className={Styles.list}>
-      {options.length
-        ? options.map((option) => (
+        {options && options.length ? (
+          options.map((option) => (
             <li
               key={option.value}
               data-testid={option.value}
@@ -30,9 +30,10 @@ export const DropdownList = ({
               {option.label}
             </li>
           ))
-        : "No options to display"}
+        ) : (
+          <p data-testid="no-text">No options to display</p>
+        )}
       </ul>
-      
     </div>
   );
 };

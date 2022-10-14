@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import PropTypes from 'prop-types';
 import Styles from "./Dropdown.module.css";
 import { KeyboardArrowDown, KeyboardArrowUp, Close } from "@mui/icons-material";
 import { DropdownList } from "../dropdownList/DropdownList";
@@ -85,6 +86,13 @@ export const Dropdown = ({ placeholder, options, isSearchable, isMulti }) => {
     </div>
   );
 };
+
+Dropdown.propTypes = {
+  placeholder: PropTypes.string,
+  options: PropTypes.array,
+  isSearchable: PropTypes.bool,
+  isMulti: PropTypes.bool,
+}
 
 Dropdown.defaultProps = {
   placeholder: "Select...",

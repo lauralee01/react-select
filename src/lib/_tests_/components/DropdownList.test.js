@@ -1,6 +1,6 @@
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import { DropdownList } from "../../lib/components/dropdownList/DropdownList";
+import { DropdownList } from "../../components/dropdownList/DropdownList";
 
 test("it does not display the search box if the options array is empty and isSearchable prop is passed", () => {
   const mockedOption = [];
@@ -24,14 +24,14 @@ test("it doesn't display the searchbox if isSearchable prop is not passed", () =
 });
 
 test("it calls the selected prop function to display the clicked option", () => {
-  const mockedOption = [
+  const mockedOptions = [
     { value: 1, label: "Hello World" },
     { value: 2, label: "It worked" },
   ];
   const handleSelectOption = jest.fn();
   render(
     <DropdownList
-      options={mockedOption}
+      options={mockedOptions}
       handleSelectOption={handleSelectOption}
     />
   );
@@ -41,4 +41,28 @@ test("it calls the selected prop function to display the clicked option", () => 
     value: 2,
     label: "It worked",
   });
+});
+
+test("it searches for the typed option in the dropdownlist", () => {
+  const mockedOptions = [
+    { value: 1, label: "Hello World" },
+    { value: 2, label: "It worked" },
+  ];
+  const handleSearchOption = jest.fn();
+  render(
+    <DropdownList
+      options={mockedOptions}
+      handleSearchOption={handleSearchOption}
+      isSearchable
+    />
+  );
+  const input = screen.getByTestId(/input/i);
+  userEvent.type(input, "world");
+  expect(handleSearchOption).toHaveBeenCalledWith("world");
+});
+
+test("it displays a text of no options if no options array is passed", () => {
+  render(<DropdownList />);
+  const options = screen.getByTestId(/no-text/i);
+  expect(options).toBeInTheDocument();
 });
