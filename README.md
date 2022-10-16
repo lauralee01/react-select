@@ -5,12 +5,23 @@ Run the following command:
 `npm install react-select-control`
 
 ## Usage
+
+```
+import React from 'react'
 import ReactSelectControl from 'react-select-control'
-<ReactSelectControl options={options} />
+
+const App = () => {
+  const options = []
+  return <ReactSelectControl options={options} />
+}
+
+```
 
 
 ## Example Usage with props
+```
 const App = () => {
   const options = []
   return <ReactSelectControl options={options} isSearchable isMulti />
 }
+```
