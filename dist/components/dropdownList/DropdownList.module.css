@@ -1,0 +1,27 @@
+.wrapper {
+    height: 100%;
+    padding: 2rem;
+    margin-top: 0.5rem;
+    box-shadow: 0rem 0rem 1.2rem rgba(0, 0, 0, 0.06);
+    border-radius: 1rem;
+    background-color: #fff;
+}
+.list {
+    padding: 0;
+}
+.listItem {
+    list-style: none;
+    margin-bottom: 1rem;
+    cursor: pointer;
+}
+.listItem:last-child {
+    margin-bottom: 0;
+}
+.input {
+    width: 98%;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 0.4rem;
+    outline: none;
+}
