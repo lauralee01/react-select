@@ -1,7 +1,7 @@
 import React from "react";
-import Styles from "./DropdownList.module.css";
+import Styles from "./ReactSelectControlList.module.css"
 
-export const DropdownList = ({
+export const ReactSelectControlList = ({
   options,
   handleSelectOption,
   isSearchable,

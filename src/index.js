@@ -1,13 +1,13 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import reportWebVitals from "./reportWebVitals";
-import { Dropdown } from "./lib/components/dropdown/Dropdown";
+import { ReactSelectControl } from "./lib/components/select-control/ReactSelectControl";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 const options = [];
 root.render(
   <React.StrictMode>
-    <Dropdown options={options} isSearchable isMulti/>
+    <ReactSelectControl options={options} isSearchable isMulti/>
   </React.StrictMode>
 );
 
@@ -15,3 +15,5 @@ root.render(
 // to log results (for example: reportWebVitals(console.log))
 // or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
 reportWebVitals();
+
+export default ReactSelectControl;

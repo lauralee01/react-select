@@ -1,25 +1,25 @@
 import * as React from 'react';
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import { DropdownList } from "../../components/dropdownList/DropdownList";
+import { ReactSelectControlList } from '../../components/select-control-list/ReactSelectControlList';
 
 test("it does not display the search box if the options array is empty and isSearchable prop is passed", () => {
   const mockedOption = [];
-  render(<DropdownList options={mockedOption} isSearchable />);
+  render(<ReactSelectControlList options={mockedOption} isSearchable />);
   const searchEl = screen.queryByTestId(/input/i);
   expect(searchEl).not.toBeInTheDocument();
 });
 
 test("it displays the search box if the options array is not empty and isSearchable prop is passed", () => {
   const mockedOption = [{ value: 1, label: "Hello World" }];
-  render(<DropdownList options={mockedOption} isSearchable />);
+  render(<ReactSelectControlList options={mockedOption} isSearchable />);
   const searchEl = screen.getByTestId(/input/i);
   expect(searchEl).toBeInTheDocument();
 });
 
 test("it doesn't display the searchbox if isSearchable prop is not passed", () => {
   const mockedOption = [{ value: 1, label: "Hello World" }];
-  render(<DropdownList options={mockedOption} />);
+  render(<ReactSelectControlList options={mockedOption} />);
   const searchEl = screen.queryByTestId(/input/i);
   expect(searchEl).not.toBeInTheDocument();
 });
@@ -31,7 +31,7 @@ test("it calls the selected prop function to display the clicked option", () => 
   ];
   const handleSelectOption = jest.fn();
   render(
-    <DropdownList
+    <ReactSelectControlList
       options={mockedOptions}
       handleSelectOption={handleSelectOption}
     />
@@ -51,7 +51,7 @@ test("it searches for the typed option in the dropdownlist", () => {
   ];
   const handleSearchOption = jest.fn();
   render(
-    <DropdownList
+    <ReactSelectControlList
       options={mockedOptions}
       handleSearchOption={handleSearchOption}
       isSearchable
@@ -63,7 +63,7 @@ test("it searches for the typed option in the dropdownlist", () => {
 });
 
 test("it displays a text of no options if no options array is passed", () => {
-  render(<DropdownList />);
+  render(<ReactSelectControlList />);
   const options = screen.getByTestId(/no-text/i);
   expect(options).toBeInTheDocument();
 });

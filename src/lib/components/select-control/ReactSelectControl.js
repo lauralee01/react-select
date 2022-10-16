@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
 import PropTypes from 'prop-types';
-import Styles from "./Dropdown.module.css";
+import Styles from "./ReactSelectControl.module.css";
 import { KeyboardArrowDown, KeyboardArrowUp, Close } from "@mui/icons-material";
-import { DropdownList } from "../dropdownList/DropdownList";
+import { ReactSelectControlList } from "../select-control-list/ReactSelectControlList";
 
-export const Dropdown = ({ placeholder, options, isSearchable, isMulti }) => {
+export const ReactSelectControl = ({ placeholder, options, isSearchable, isMulti }) => {
   const [showDropList, setDropdownList] = useState(false);
   const [selectedOption, setSelectedOption] = useState(isMulti ? [] : null);
   const [searchItem, setSearchItem] = useState("");
@@ -76,7 +76,7 @@ export const Dropdown = ({ placeholder, options, isSearchable, isMulti }) => {
         )}
       </div>
       {showDropList && (
-        <DropdownList
+        <ReactSelectControlList
           options={filteredOptions}
           handleSelectOption={handleSelectOption}
           isSearchable={isSearchable}
@@ -87,14 +87,14 @@ export const Dropdown = ({ placeholder, options, isSearchable, isMulti }) => {
   );
 };
 
-Dropdown.propTypes = {
+ReactSelectControl.propTypes = {
   placeholder: PropTypes.string,
   options: PropTypes.array,
   isSearchable: PropTypes.bool,
   isMulti: PropTypes.bool,
 }
 
-Dropdown.defaultProps = {
+ReactSelectControl.defaultProps = {
   placeholder: "Select...",
   options: [],
   isSearchable: false,
