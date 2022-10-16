@@ -6,7 +6,6 @@ Run the following command:
 
 ## Usage
 import ReactSelectControl from 'react-select-control'
-
 <ReactSelectControl options={options} />
 
 
