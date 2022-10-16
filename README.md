@@ -7,10 +7,8 @@ Run the following command:
 ## Usage
 import ReactSelectControl from 'react-select-control'
 
-const App = () => {
-  const options = []
-  return <ReactSelectControl options={options} />
-}
+<ReactSelectControl options={options} />
+
 
 ## Example Usage with props
 const App = () => {
