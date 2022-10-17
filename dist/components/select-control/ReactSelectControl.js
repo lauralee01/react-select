@@ -34,11 +34,9 @@ export var ReactSelectControl = function ReactSelectControl(_ref) {
       setSelectedOption(function (prevState) {
         return [].concat(_toConsumableArray(prevState), [option]);
       });
-      onChange(selectedOption);
     }
     if (!isMulti) {
       setSelectedOption(option);
-      onChange(selectedOption);
     }
   };
   var handleSearchOption = function handleSearchOption(text) {
@@ -52,7 +50,6 @@ export var ReactSelectControl = function ReactSelectControl(_ref) {
     setSelectedOption(selectedOption.filter(function (option) {
       return option.value !== value;
     }));
-    onChange(selectedOption);
   };
   var displayedData = function displayedData() {
     if (isMulti && selectedOption.length) {
@@ -73,7 +70,9 @@ export var ReactSelectControl = function ReactSelectControl(_ref) {
       return placeholder;
     }
   };
-  useEffect(function () {}, [selectedOption]);
+  useEffect(function () {
+    onChange(selectedOption);
+  }, [selectedOption]);
   return /*#__PURE__*/React.createElement("div", {
     className: Styles.control
   }, /*#__PURE__*/React.createElement("div", {
