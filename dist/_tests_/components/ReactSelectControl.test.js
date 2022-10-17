@@ -1,25 +1,26 @@
+import * as React from 'react';
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import { Dropdown } from "../../components/dropdown/Dropdown";
+import { ReactSelectControl } from '../../components/select-control/ReactSelectControl';
 test("it displays the placeholder Select on mounted", function () {
-  render( /*#__PURE__*/React.createElement(Dropdown, null));
+  render( /*#__PURE__*/React.createElement(ReactSelectControl, null));
   var placeholderEl = screen.getByText(/select/i);
   expect(placeholderEl).toBeInTheDocument();
 });
 test("child component should not be rendered", function () {
-  render( /*#__PURE__*/React.createElement(Dropdown, null));
+  render( /*#__PURE__*/React.createElement(ReactSelectControl, null));
   var optionsEl = screen.queryByTestId(/options/i);
   expect(optionsEl).not.toBeInTheDocument();
 });
 test("child component is rendered when dropdown arrow is clicked on", function () {
-  render( /*#__PURE__*/React.createElement(Dropdown, null));
+  render( /*#__PURE__*/React.createElement(ReactSelectControl, null));
   var arrowUpIconEl = screen.getByTestId(/keyboardarrowupicon/i);
   userEvent.click(arrowUpIconEl);
   var optionsEl = screen.getByTestId(/options/i);
   expect(optionsEl).toBeInTheDocument();
 });
 test("child component is hidden when arrow down icon is clicked on", function () {
-  render( /*#__PURE__*/React.createElement(Dropdown, null));
+  render( /*#__PURE__*/React.createElement(ReactSelectControl, null));
   var arrowUpIconEl = screen.getByTestId(/keyboardarrowupicon/i);
   userEvent.click(arrowUpIconEl);
   var arrowDownIconEl = screen.getByTestId(/keyboardarrowdownicon/i);
@@ -38,7 +39,7 @@ test("it displays a single selection if the isMulti prop is not passed", functio
     value: 3,
     label: "More tests"
   }];
-  render( /*#__PURE__*/React.createElement(Dropdown, {
+  render( /*#__PURE__*/React.createElement(ReactSelectControl, {
     options: mockedOptions
   }));
   var arrowUpIconEl = screen.getByTestId(/keyboardarrowupicon/i);
@@ -59,7 +60,7 @@ test("it displays multiple selections if the isMulti prop is passed", function (
     value: 3,
     label: "More tests"
   }];
-  render( /*#__PURE__*/React.createElement(Dropdown, {
+  render( /*#__PURE__*/React.createElement(ReactSelectControl, {
     options: mockedOptions,
     isMulti: true
   }));

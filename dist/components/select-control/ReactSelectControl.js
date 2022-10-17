@@ -1,10 +1,10 @@
 import _toConsumableArray from "@babel/runtime/helpers/esm/toConsumableArray";
 import _slicedToArray from "@babel/runtime/helpers/esm/slicedToArray";
 import React, { useEffect, useState } from "react";
-import Styles from "./Dropdown.module.css";
+import Styles from "./ReactSelectControl.module.css";
 import { KeyboardArrowDown, KeyboardArrowUp, Close } from "@mui/icons-material";
-import { DropdownList } from "../dropdownList/DropdownList";
-export var Dropdown = function Dropdown(_ref) {
+import { ReactSelectControlList } from "../select-control-list/ReactSelectControlList";
+export var ReactSelectControl = function ReactSelectControl(_ref) {
   var placeholder = _ref.placeholder,
     options = _ref.options,
     isSearchable = _ref.isSearchable,
@@ -81,14 +81,14 @@ export var Dropdown = function Dropdown(_ref) {
   }) : /*#__PURE__*/React.createElement(KeyboardArrowDown, {
     onClick: toggleShow,
     className: Styles.icon
-  })), showDropList && /*#__PURE__*/React.createElement(DropdownList, {
+  })), showDropList && /*#__PURE__*/React.createElement(ReactSelectControlList, {
     options: filteredOptions,
     handleSelectOption: handleSelectOption,
     isSearchable: isSearchable,
     handleSearchOption: handleSearchOption
   }));
 };
-Dropdown.defaultProps = {
+ReactSelectControl.defaultProps = {
   placeholder: "Select...",
   options: [],
   isSearchable: false,

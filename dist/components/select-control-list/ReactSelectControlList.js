@@ -1,6 +1,6 @@
 import React from "react";
-import Styles from "./DropdownList.module.css";
-export var DropdownList = function DropdownList(_ref) {
+import Styles from "./ReactSelectControlList.module.css";
+export var ReactSelectControlList = function ReactSelectControlList(_ref) {
   var options = _ref.options,
     handleSelectOption = _ref.handleSelectOption,
     isSearchable = _ref.isSearchable,
