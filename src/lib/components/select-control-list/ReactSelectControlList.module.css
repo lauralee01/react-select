@@ -1,6 +1,6 @@
 .wrapper {
-    height: 100%;
-    padding: 2rem;
+    height: auto;
+    padding: 0.5rem 1rem;;
     margin-top: 0.5rem;
     box-shadow: 0rem 0rem 1.2rem rgba(0, 0, 0, 0.06);
     border-radius: 1rem;

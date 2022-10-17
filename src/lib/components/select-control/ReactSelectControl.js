@@ -1,10 +1,16 @@
 import React, { useEffect, useState } from "react";
-import PropTypes from 'prop-types';
+import PropTypes from "prop-types";
 import Styles from "./ReactSelectControl.module.css";
 import { KeyboardArrowDown, KeyboardArrowUp, Close } from "@mui/icons-material";
 import { ReactSelectControlList } from "../select-control-list/ReactSelectControlList";
 
-export const ReactSelectControl = ({ placeholder, options, isSearchable, isMulti }) => {
+export const ReactSelectControl = ({
+  placeholder,
+  options,
+  isSearchable,
+  isMulti,
+  onChange
+}) => {
   const [showDropList, setDropdownList] = useState(false);
   const [selectedOption, setSelectedOption] = useState(isMulti ? [] : null);
   const [searchItem, setSearchItem] = useState("");
@@ -21,9 +27,11 @@ export const ReactSelectControl = ({ placeholder, options, isSearchable, isMulti
       ).length !== 1
     ) {
       setSelectedOption((prevState) => [...prevState, option]);
+      onChange(selectedOption)
     }
     if (!isMulti) {
       setSelectedOption(option);
+      onChange(selectedOption)
     }
   };
 
@@ -33,13 +41,15 @@ export const ReactSelectControl = ({ placeholder, options, isSearchable, isMulti
 
   const filteredOptions = options.filter(
     (option) =>
-      option && option.label.toLowerCase().indexOf(searchItem.toLowerCase()) === 0
+      option &&
+      option.label.toLowerCase().indexOf(searchItem.toLowerCase()) === 0
   );
 
   const removeOption = ({ value }) => {
     setSelectedOption(
       selectedOption.filter((option) => option.value !== value)
     );
+    onChange(selectedOption)
   };
 
   const displayedData = () => {
@@ -63,7 +73,7 @@ export const ReactSelectControl = ({ placeholder, options, isSearchable, isMulti
   useEffect(() => {}, [selectedOption]);
 
   return (
-    <div>
+    <div className={Styles.control}>
       <div className={Styles.wrapper}>
         <div className={Styles.cover} data-testid="data">
           {displayedData()}
@@ -92,11 +102,13 @@ ReactSelectControl.propTypes = {
   options: PropTypes.array,
   isSearchable: PropTypes.bool,
   isMulti: PropTypes.bool,
-}
+  onChange: PropTypes.func,
+};
 
 ReactSelectControl.defaultProps = {
   placeholder: "Select...",
   options: [],
   isSearchable: false,
   isMulti: false,
+  onChange: () => {},
 };

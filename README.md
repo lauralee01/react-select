@@ -8,7 +8,7 @@ Run the following command:
 
 ```
 import React from 'react'
-import ReactSelectControl from 'react-select-control'
+import { ReactSelectControl } from 'react-select-control'
 
 const App = () => {
   const options = []
