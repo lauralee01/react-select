@@ -27,11 +27,9 @@ export const ReactSelectControl = ({
       ).length !== 1
     ) {
       setSelectedOption((prevState) => [...prevState, option]);
-      onChange(selectedOption)
     }
     if (!isMulti) {
       setSelectedOption(option);
-      onChange(selectedOption)
     }
   };
 
@@ -49,7 +47,7 @@ export const ReactSelectControl = ({
     setSelectedOption(
       selectedOption.filter((option) => option.value !== value)
     );
-    onChange(selectedOption)
+   
   };
 
   const displayedData = () => {
@@ -70,7 +68,9 @@ export const ReactSelectControl = ({
     }
   };
 
-  useEffect(() => {}, [selectedOption]);
+  useEffect(() => {
+    onChange(selectedOption)
+  }, [selectedOption]);
 
   return (
     <div className={Styles.control}>

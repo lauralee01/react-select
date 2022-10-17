@@ -21,7 +21,7 @@ const App = () => {
 ## Example Usage with props
 ```
 const App = () => {
-  const options = []
+  const options = [{value: 1, label: 'one'}]
   return <ReactSelectControl options={options} isSearchable isMulti />
 }
 ```
