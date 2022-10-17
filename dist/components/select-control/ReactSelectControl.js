@@ -8,7 +8,8 @@ export var ReactSelectControl = function ReactSelectControl(_ref) {
   var placeholder = _ref.placeholder,
     options = _ref.options,
     isSearchable = _ref.isSearchable,
-    isMulti = _ref.isMulti;
+    isMulti = _ref.isMulti,
+    onChange = _ref.onChange;
   var _useState = useState(false),
     _useState2 = _slicedToArray(_useState, 2),
     showDropList = _useState2[0],
@@ -33,9 +34,11 @@ export var ReactSelectControl = function ReactSelectControl(_ref) {
       setSelectedOption(function (prevState) {
         return [].concat(_toConsumableArray(prevState), [option]);
       });
+      onChange(selectedOption);
     }
     if (!isMulti) {
       setSelectedOption(option);
+      onChange(selectedOption);
     }
   };
   var handleSearchOption = function handleSearchOption(text) {
@@ -49,6 +52,7 @@ export var ReactSelectControl = function ReactSelectControl(_ref) {
     setSelectedOption(selectedOption.filter(function (option) {
       return option.value !== value;
     }));
+    onChange(selectedOption);
   };
   var displayedData = function displayedData() {
     if (isMulti && selectedOption.length) {
@@ -70,7 +74,9 @@ export var ReactSelectControl = function ReactSelectControl(_ref) {
     }
   };
   useEffect(function () {}, [selectedOption]);
-  return /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("div", {
+  return /*#__PURE__*/React.createElement("div", {
+    className: Styles.control
+  }, /*#__PURE__*/React.createElement("div", {
     className: Styles.wrapper
   }, /*#__PURE__*/React.createElement("div", {
     className: Styles.cover,
@@ -92,5 +98,6 @@ ReactSelectControl.defaultProps = {
   placeholder: "Select...",
   options: [],
   isSearchable: false,
-  isMulti: false
+  isMulti: false,
+  onChange: function onChange() {}
 };
