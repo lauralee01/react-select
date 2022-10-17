@@ -42,7 +42,7 @@ export var ReactSelectControl = function ReactSelectControl(_ref) {
     setSearchItem(text);
   };
   var filteredOptions = options.filter(function (option) {
-    return option.label.toLowerCase().indexOf(searchItem.toLowerCase()) === 0;
+    return option && option.label.toLowerCase().indexOf(searchItem.toLowerCase()) === 0;
   });
   var removeOption = function removeOption(_ref2) {
     var value = _ref2.value;
