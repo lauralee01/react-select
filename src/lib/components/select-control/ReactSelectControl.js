@@ -33,7 +33,7 @@ export const ReactSelectControl = ({ placeholder, options, isSearchable, isMulti
 
   const filteredOptions = options.filter(
     (option) =>
-      option.label.toLowerCase().indexOf(searchItem.toLowerCase()) === 0
+      option && option.label.toLowerCase().indexOf(searchItem.toLowerCase()) === 0
   );
 
   const removeOption = ({ value }) => {
